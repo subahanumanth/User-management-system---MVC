@@ -1,15 +1,15 @@
 <?php
-$url = $_GET['url'];
+print_r($_SERVER);
+$url = $_SERVER['PATH_INFO'];
 $url = explode('/',$url);
 print_r($url);
-if (isset($url[0])) {
+if (isset($url[1])) {
     require("./model/post.php");
-    require("./controller/".$url[0].".php");
-    $controller = new $url[0]();
+    require("./controller/".$url[1].".php");
 }
 
-if(isset($url[1])) {
-  $controller->{$url[1]}();
+if(isset($url[2])) {
+  $controller->{$url[2]}();
 }
 
 ?>
